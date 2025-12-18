@@ -1,0 +1,59 @@
+﻿@model IEnumerable<geslivraison.Models.DemandeLivraison>
+
+@{
+    ViewData["Title"] = "Gérer les Demandes";
+}
+
+<h2>Gérer les Demandes de Livraison</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Adresse départ</th>
+            <th>Adresse arrivée</th>
+            <th>Statut</th>
+            <th>Administrateur</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Client?.Nom @d.Client?.Prenom</td>
+                <td>@d.AdresseDepart</td>
+                <td>@d.AdresseArrivee</td>
+                <td>@d.Statut</td>
+                <td>@(d.Administrateur != null ? d.Administrateur.Nom : "Non assignée")</td>
+
+                <td>
+                    <!-- ASSIGNATION -->
+                    <form asp-action="Assigner" method="get" style="display:inline-block;">
+                        <input type="hidden" name="demandeId" value="@d.Id" />
+                        <select name="adminId" class="form-select form-select-sm">
+                            @* Liste des admins *@
+                            @foreach (var admin in ViewBag.Admins as List<geslivraison.Models.Administrateur>)
+                            {
+                                <option value="@admin.Id">@admin.Nom</option>
+                            }
+                        </select>
+                        <button class="btn btn-primary btn-sm mt-1">Assigner</button>
+                    </form>
+
+                    <!-- CHANGEMENT STATUT -->
+                    <form asp-action="ChangerStatut" method="post" style="display:inline-block;">
+                        <input type="hidden" name="demandeId" value="@d.Id" />
+                        <select name="nouveauStatut" class="form-select form-select-sm">
+                            @foreach (var statut in Enum.GetValues(typeof(geslivraison.Models.StatutDemande)))
+                            {
+                                <option value="@statut">@statut</option>
+                            }
+                        </select>
+                        <button class="btn btn-warning btn-sm mt-1">Changer</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

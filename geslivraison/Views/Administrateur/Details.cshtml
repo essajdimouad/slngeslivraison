@@ -1,0 +1,20 @@
+﻿@model geslivraison.Models.Administrateur
+
+@{
+    ViewData["Title"] = "Détails Administrateur";
+}
+
+<h2>Détails de l'Administrateur</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Nom</dt>
+    <dd class="col-sm-10">@Model.Nom</dd>
+
+    <dt class="col-sm-2">Email</dt>
+    <dd class="col-sm-10">@Model.Email</dd>
+</dl>
+
+<p>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Modifier</a>
+    <a class="btn btn-secondary" asp-action="Index">Retour</a>
+</p>

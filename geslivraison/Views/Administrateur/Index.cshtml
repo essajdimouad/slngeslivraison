@@ -1,0 +1,35 @@
+﻿@model IEnumerable<geslivraison.Models.Administrateur>
+
+@{
+    ViewData["Title"] = "Liste des Administrateurs";
+}
+
+<h2>Liste des Administrateurs</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">+ Ajouter Administrateur</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model)
+        {
+            <tr>
+                <td>@admin.Nom</td>
+                <td>@admin.Email</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@admin.Id">Détails</a>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@admin.Id">Modifier</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@admin.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

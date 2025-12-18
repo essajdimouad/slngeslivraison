@@ -1,0 +1,46 @@
+﻿@model geslivraison.Models.Client
+
+@{
+    ViewData["Title"] = "Créer un compte client";
+    Layout = "~/Views/Shared/AuthLayout.cshtml";
+}
+
+<div class="card shadow p-4" style="width: 450px;">
+    <h3 class="text-center mb-4">Créer un compte client</h3>
+
+    <form asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Nom" class="form-label"></label>
+            <input asp-for="Nom" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Prenom" class="form-label"></label>
+            <input asp-for="Prenom" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" type="email" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Adresse" class="form-label"></label>
+            <input asp-for="Adresse" class="form-control" />
+        </div>
+
+        <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-primary">
+                Créer le compte
+            </button>
+
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="btn btn-outline-secondary">
+                Déjà un compte ? Se connecter
+            </a>
+        </div>
+
+    </form>
+</div>

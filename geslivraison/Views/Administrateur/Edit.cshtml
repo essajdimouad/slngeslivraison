@@ -1,0 +1,24 @@
+﻿@model geslivraison.Models.Administrateur
+
+@{
+    ViewData["Title"] = "Modifier Administrateur";
+}
+
+<h2>Modifier Administrateur</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Nom"></label>
+        <input asp-for="Nom" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-2">Sauvegarder</button>
+    <a class="btn btn-secondary mt-2" asp-action="Index">Annuler</a>
+</form>

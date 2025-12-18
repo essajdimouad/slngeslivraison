@@ -1,0 +1,49 @@
+﻿@model geslivraison.ViewModels.LoginViewModel
+@{
+    Layout = "_LoginLayout";
+}
+
+<div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-center mb-4">🔐 Connexion</h4>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger text-center">
+                        @ViewBag.Error
+                    </div>
+                }
+
+                <form asp-action="Login" method="post">
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Mot de passe</label>
+                        <input asp-for="MotDePasse" type="password" class="form-control" />
+                    </div>
+
+                    <button class="btn btn-primary w-100 mb-2">
+                        Se connecter
+                    </button>
+                </form>
+
+                <hr />
+
+                <a asp-controller="Account" asp-action="LoginAdmin"
+                   class="btn btn-outline-dark w-100 mb-2">
+                    Connexion Administrateur
+                </a>
+
+                <a asp-controller="Client" asp-action="Create"
+                   class="btn btn-outline-secondary w-100">
+                    Créer un compte
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
